@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Dashboard } from './components/Dashboard';
 import { IncidentHistory } from './components/IncidentHistory';
+import { CommunityReports } from './components/CommunityReports';
 import { RefreshIndicator } from './components/RefreshIndicator';
 
-type Tab = 'dashboard' | 'history';
+type Tab = 'dashboard' | 'history' | 'community';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -38,13 +39,25 @@ function App() {
               >
                 Incident History
               </button>
+              <button
+                onClick={() => setActiveTab('community')}
+                className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+                  activeTab === 'community'
+                    ? 'bg-gray-800 text-white'
+                    : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                }`}
+              >
+                Community Reports
+              </button>
             </nav>
           </div>
           {activeTab === 'dashboard' && <RefreshIndicator />}
         </div>
       </header>
 
-      {activeTab === 'dashboard' ? <Dashboard /> : <IncidentHistory />}
+      {activeTab === 'dashboard' && <Dashboard />}
+      {activeTab === 'history' && <IncidentHistory />}
+      {activeTab === 'community' && <CommunityReports />}
 
       <footer className="border-t border-gray-800 px-6 py-4 mt-auto">
         <div className="max-w-6xl mx-auto text-center text-xs text-gray-600">
