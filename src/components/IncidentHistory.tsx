@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useIncidentHistory } from '../hooks/useIncidentHistory';
 import { CalendarView } from './CalendarView';
 import { getImpactBgClass, getImpactColor } from '../utils/statusColors';
@@ -37,6 +37,16 @@ export function IncidentHistory() {
 
   const { incidents, loading, error, adyenLimited } = useIncidentHistory();
 
+  // Close modal on Escape key
+  useEffect(() => {
+    if (!selectedDate) return;
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setSelectedDate(null);
+    }
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, [selectedDate]);
+
   function navigateMonth(delta: number) {
     setSelectedDate(null);
     let newMonth = month + delta;
@@ -47,7 +57,7 @@ export function IncidentHistory() {
     setYear(newYear);
   }
 
-  // Get incidents for the selected date detail view
+  // Get incidents for the selected date
   const selectedIncidents: HistoricalIncident[] = selectedDate
     ? incidents.filter((i) => {
         const start = new Date(i.startedAt);
@@ -106,59 +116,71 @@ export function IncidentHistory() {
         />
       )}
 
-      {/* Day detail panel */}
+      {/* Day detail modal */}
       {selectedDate && (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-semibold text-gray-200">
-              {selectedDate.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
-            </h3>
-            <button
-              onClick={() => setSelectedDate(null)}
-              className="text-gray-500 hover:text-gray-300 text-sm"
-            >
-              Close
-            </button>
-          </div>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedDate(null)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/60" />
 
-          {selectedIncidents.length === 0 ? (
-            <p className="text-sm text-gray-500">No incidents on this day.</p>
-          ) : (
-            <div className="space-y-3">
-              {selectedIncidents.map((incident) => (
-                <div key={incident.id} className="flex items-start gap-3 group">
-                  <span
-                    className={`${getImpactBgClass(incident.impact)} w-2 h-2 rounded-full mt-1.5 shrink-0`}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-gray-500 shrink-0">{incident.providerName}</span>
-                      {incident.url && (
-                        <a
-                          href={incident.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-blue-400 hover:text-blue-300 opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                          View
-                        </a>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-200">{incident.title}</p>
-                    <div className="flex items-center gap-3 mt-0.5">
-                      <span className="text-xs" style={{ color: getImpactColor(incident.impact) }}>
-                        {formatDateTime(incident.startedAt)}
-                        {incident.resolvedAt ? ` — ${formatDateTime(incident.resolvedAt)}` : ' — Ongoing'}
-                      </span>
-                      <span className="text-xs text-gray-600">
-                        {formatDuration(incident.startedAt, incident.resolvedAt)}
-                      </span>
+          {/* Modal */}
+          <div
+            className="relative bg-gray-800 border border-gray-700 rounded-lg p-5 w-full max-w-lg max-h-[80vh] overflow-y-auto shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-sm font-semibold text-gray-200">
+                {selectedDate.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
+              </h3>
+              <button
+                onClick={() => setSelectedDate(null)}
+                className="text-gray-500 hover:text-gray-300 text-lg leading-none"
+              >
+                &times;
+              </button>
+            </div>
+
+            {selectedIncidents.length === 0 ? (
+              <p className="text-sm text-gray-500">No incidents on this day.</p>
+            ) : (
+              <div className="space-y-3">
+                {selectedIncidents.map((incident) => (
+                  <div key={incident.id} className="flex items-start gap-3 group">
+                    <span
+                      className={`${getImpactBgClass(incident.impact)} w-2 h-2 rounded-full mt-1.5 shrink-0`}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500 shrink-0">{incident.providerName}</span>
+                        {incident.url && (
+                          <a
+                            href={incident.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-blue-400 hover:text-blue-300 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            View
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-sm text-gray-200">{incident.title}</p>
+                      <div className="flex items-center gap-3 mt-0.5">
+                        <span className="text-xs" style={{ color: getImpactColor(incident.impact) }}>
+                          {formatDateTime(incident.startedAt)}
+                          {incident.resolvedAt ? ` — ${formatDateTime(incident.resolvedAt)}` : ' — Ongoing'}
+                        </span>
+                        <span className="text-xs text-gray-600">
+                          {formatDuration(incident.startedAt, incident.resolvedAt)}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </main>
