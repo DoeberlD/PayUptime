@@ -81,6 +81,19 @@ export const providers: PSPProvider[] = [
     region: 'EU',
   },
   {
+    id: 'eps',
+    name: 'EPS',
+    logo: '/logos/eps.svg',
+    statusPageUrl: 'https://eservice.psa.at/de/eservice-status.html',
+    apiType: 'custom',
+    apiBaseUrl: import.meta.env.DEV
+      ? '/proxy/eps'
+      : 'https://eservice.psa.at',
+    category: 'Online Banking (AT)',
+    region: 'Austria',
+    corsProxy: true,
+  },
+  {
     id: 'payone',
     name: 'PAYONE',
     logo: '/logos/payone.svg',
@@ -89,6 +102,16 @@ export const providers: PSPProvider[] = [
     apiBaseUrl: 'https://api.storyblok.com/v2/cdn',
     category: 'Payment Gateway',
     region: 'AT / EU',
+  },
+  {
+    id: 'worldline',
+    name: 'Worldline',
+    logo: '/logos/worldline.svg',
+    statusPageUrl: 'https://wlop.status.worldline-solutions.com',
+    apiType: 'statuspage_io',
+    apiBaseUrl: 'https://wlop.status.worldline-solutions.com/api/v2',
+    category: 'Payment Gateway',
+    region: 'EU / Global',
   },
   {
     id: 'worldpay',
@@ -144,16 +167,6 @@ export const providers: PSPProvider[] = [
     corsProxy: true,
   },
   {
-    id: 'worldline',
-    name: 'Worldline',
-    logo: '/logos/worldline.svg',
-    statusPageUrl: 'https://wlop.status.worldline-solutions.com',
-    apiType: 'statuspage_io',
-    apiBaseUrl: 'https://wlop.status.worldline-solutions.com/api/v2',
-    category: 'Payment Gateway',
-    region: 'EU / Global',
-  },
-  {
     id: 'worldpay-gateway',
     name: 'Worldpay Gateway',
     logo: '/logos/worldpay.svg',
@@ -162,18 +175,5 @@ export const providers: PSPProvider[] = [
     apiBaseUrl: 'https://status.worldpay.com/api/v2',
     category: 'Payment Gateway',
     region: 'Global',
-  },
-  {
-    id: 'eps',
-    name: 'EPS',
-    logo: '/logos/eps.svg',
-    statusPageUrl: 'https://eservice.psa.at/de/eservice-status.html',
-    apiType: 'custom',
-    apiBaseUrl: import.meta.env.DEV
-      ? '/proxy/eps'
-      : 'https://eservice.psa.at',
-    category: 'Online Banking (AT)',
-    region: 'Austria',
-    corsProxy: true,
   },
 ];
