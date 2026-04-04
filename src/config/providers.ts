@@ -117,4 +117,14 @@ export const providers: PSPProvider[] = [
     category: 'Payment Gateway',
     region: 'AT / EU',
   },
+  {
+    id: 'googlepay',
+    name: 'Google Pay',
+    logo: '/logos/googlepay.svg',
+    statusPageUrl: 'https://pay.google.com/status/',
+    apiType: 'custom',
+    apiBaseUrl: 'https://pay.google.com/status',
+    category: 'Wallet / PSP',
+    region: 'Global',
+  },
 ];

@@ -2,6 +2,7 @@ import type { PSPProvider, HistoricalIncident } from '../../types';
 import { fetchStatuspageHistory } from './statuspageHistory';
 import { fetchPayPalHistory } from './paypalHistory';
 import { fetchAdyenHistory } from './adyenHistory';
+import { fetchGooglePayHistory } from './googlepayHistory';
 import type { AdyenHistoryResult } from './adyenHistory';
 
 export type { AdyenHistoryResult };
@@ -15,6 +16,7 @@ export async function fetchProviderHistory(
     case 'custom':
       if (provider.id === 'paypal') return fetchPayPalHistory(provider);
       if (provider.id === 'adyen') return fetchAdyenHistory(provider);
+      if (provider.id === 'googlepay') return fetchGooglePayHistory(provider);
       return [];
     default:
       return [];
