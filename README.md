@@ -1,7 +1,7 @@
 # PayPulse — PSP Status Dashboard
 
 **Live:** [paypulse-2ma.pages.dev](https://paypulse-2ma.pages.dev/)
-**Repo:** [github.com/Collagen42/paypulse](https://github.com/Collagen42/paypulse)
+**Repo:** [github.com/DoeberlD/paypulse](https://github.com/DoeberlD/paypulse)
 
 A real-time dashboard that aggregates the public status of major Payment Service Providers (PSPs) into a single view. Built as a portfolio project demonstrating payments domain knowledge.
 
