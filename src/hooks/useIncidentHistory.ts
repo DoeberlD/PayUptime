@@ -4,7 +4,7 @@ import { fetchProviderHistory } from '../adapters/history';
 import type { AdyenHistoryResult } from '../adapters/history';
 import type { HistoricalIncident } from '../types';
 
-const HISTORY_PROVIDER_IDS = ['stripe', 'klarna', 'worldpay', 'cybersource', 'paypal', 'adyen'];
+const HISTORY_PROVIDER_IDS = ['stripe', 'klarna', 'worldpay', 'cybersource', 'paypal', 'adyen', 'unzer'];
 
 // Module-level cache so data survives tab switches
 let cachedIncidents: HistoricalIncident[] | null = null;

@@ -98,6 +98,16 @@ export const providers: PSPProvider[] = [
     region: 'Global',
   },
   {
+    id: 'unzer',
+    name: 'Unzer',
+    logo: '/logos/unzer.svg',
+    statusPageUrl: 'https://status.unzer.com',
+    apiType: 'statuspage_io',
+    apiBaseUrl: 'https://status.unzer.com/api/v2',
+    category: 'Payment Gateway',
+    region: 'EU',
+  },
+  {
     id: 'payone',
     name: 'PAYONE',
     logo: '/logos/payone.svg',
