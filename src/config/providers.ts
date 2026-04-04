@@ -4,7 +4,7 @@ export const providers: PSPProvider[] = [
   {
     id: 'visa-acceptance',
     name: 'Visa Acceptance Solutions',
-    logo: '/logos/visa.svg',
+    logo: '/logos/visa.png',
     statusPageUrl: 'https://status.visaacceptance.com',
     apiType: 'statuspage_io',
     apiBaseUrl: 'https://status.visaacceptance.com/api/v2',
@@ -27,7 +27,7 @@ export const providers: PSPProvider[] = [
   {
     id: 'paypal',
     name: 'PayPal',
-    logo: '/logos/paypal.svg',
+    logo: '/logos/paypal.png',
     statusPageUrl: 'https://www.paypal-status.com',
     apiType: 'custom',
     apiBaseUrl: import.meta.env.DEV
@@ -73,7 +73,7 @@ export const providers: PSPProvider[] = [
   {
     id: 'unzer',
     name: 'Unzer',
-    logo: '/logos/unzer.svg',
+    logo: '/logos/unzer.png',
     statusPageUrl: 'https://status.unzer.com',
     apiType: 'statuspage_io',
     apiBaseUrl: 'https://status.unzer.com/api/v2',
