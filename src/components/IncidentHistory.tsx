@@ -69,7 +69,8 @@ export function IncidentHistory() {
     : [];
 
   return (
-    <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 space-y-4 flex-1">
+    <main className="flex-1 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto py-6 space-y-4">
       {adyenLimited && (
         <div className="bg-yellow-900/20 border border-yellow-800/50 rounded-lg px-4 py-2 text-sm text-yellow-200">
           Adyen historical data is limited — only active/recent incidents are available from their API.
@@ -183,6 +184,7 @@ export function IncidentHistory() {
           </div>
         </div>
       )}
+      </div>
     </main>
   );
 }
