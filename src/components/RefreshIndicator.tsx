@@ -12,17 +12,26 @@ export function RefreshIndicator() {
     return () => clearInterval(timer);
   }, []);
 
-  const progress = ((POLL_INTERVAL - secondsLeft) / POLL_INTERVAL) * 100;
-
   return (
-    <div className="flex items-center gap-2 text-xs text-gray-500">
-      <div className="w-16 h-1.5 bg-gray-700 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-blue-500 rounded-full transition-all duration-1000"
-          style={{ width: `${progress}%` }}
-        />
+    <div className="relative p-[1px] rounded-lg overflow-hidden">
+      {/* Animated border — rotating conic gradient */}
+      <div
+        className="absolute inset-0 rounded-lg"
+        style={{
+          background: `conic-gradient(from ${((POLL_INTERVAL - secondsLeft) / POLL_INTERVAL) * 360}deg, #3b82f6, #3b82f600 120deg)`,
+          transition: 'background 0.3s linear',
+        }}
+      />
+      {/* Inner content */}
+      <div className="relative bg-gray-900 rounded-lg px-3 py-1.5 flex items-center gap-2">
+        <div className="relative w-3 h-3">
+          <span className="absolute inset-0 rounded-full bg-blue-500/30 animate-ping" />
+          <span className="absolute inset-0.5 rounded-full bg-blue-500" />
+        </div>
+        <span className="text-xs text-gray-400 tabular-nums font-medium">
+          {secondsLeft}s
+        </span>
       </div>
-      <span>{secondsLeft}s</span>
     </div>
   );
 }
