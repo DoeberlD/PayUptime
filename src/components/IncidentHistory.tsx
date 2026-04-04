@@ -35,7 +35,7 @@ export function IncidentHistory() {
   const [month, setMonth] = useState(now.getMonth());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const { incidents, loading, error, adyenLimited } = useIncidentHistory();
+  const { incidents, loading, error } = useIncidentHistory();
 
   // Close modal on Escape key
   useEffect(() => {
@@ -71,11 +71,9 @@ export function IncidentHistory() {
   return (
     <main className="flex-1 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto py-6 space-y-4">
-      {adyenLimited && (
-        <div className="bg-yellow-900/20 border border-yellow-800/50 rounded-lg px-4 py-2 text-sm text-yellow-200">
-          Adyen historical data is limited — only active/recent incidents are available from their API.
-        </div>
-      )}
+      <div className="bg-yellow-900/20 border border-yellow-800/50 rounded-lg px-4 py-2 text-sm text-yellow-200">
+        Historical data is limited for: Adyen, Mastercard, Apple Pay, PAYONE, EPS. Only Live Status incidents are shown.
+      </div>
 
       {error && (
         <div className="bg-red-900/20 border border-red-800/50 rounded-lg px-4 py-2 text-sm text-red-200">
