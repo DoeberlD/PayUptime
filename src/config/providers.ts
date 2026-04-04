@@ -140,4 +140,17 @@ export const providers: PSPProvider[] = [
     region: 'Global',
     corsProxy: true,
   },
+  {
+    id: 'mastercard',
+    name: 'Mastercard',
+    logo: '/logos/mastercard.svg',
+    statusPageUrl: 'https://developer.mastercard.com/api-status',
+    apiType: 'custom',
+    apiBaseUrl: import.meta.env.DEV
+      ? '/proxy/mastercard'
+      : 'https://developer.mastercard.com',
+    category: 'Card Network',
+    region: 'Global',
+    corsProxy: true,
+  },
 ];

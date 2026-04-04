@@ -21,6 +21,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/proxy\/apple/, ''),
       },
+      '/proxy/mastercard': {
+        target: 'https://developer.mastercard.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/proxy\/mastercard/, ''),
+      },
     },
   },
 })
