@@ -163,4 +163,17 @@ export const providers: PSPProvider[] = [
     category: 'Payment Gateway',
     region: 'Global',
   },
+  {
+    id: 'eps',
+    name: 'EPS',
+    logo: '/logos/eps.svg',
+    statusPageUrl: 'https://eservice.psa.at/de/eservice-status.html',
+    apiType: 'custom',
+    apiBaseUrl: import.meta.env.DEV
+      ? '/proxy/eps'
+      : 'https://eservice.psa.at',
+    category: 'Online Banking (AT)',
+    region: 'Austria',
+    corsProxy: true,
+  },
 ];

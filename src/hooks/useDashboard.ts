@@ -43,8 +43,9 @@ export function useDashboard(): DashboardState {
   const p12 = useProviderStatusWrapper(providers[12]);
   const p13 = useProviderStatusWrapper(providers[13]);
   const p14 = useProviderStatusWrapper(providers[14]);
+  const p15 = useProviderStatusWrapper(providers[15]);
 
-  const providerStates = useMemo(() => [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14], [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14]);
+  const providerStates = useMemo(() => [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15], [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15]);
 
   const allIncidents = useMemo(() => {
     const incidents: DashboardIncident[] = [];

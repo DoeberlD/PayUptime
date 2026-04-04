@@ -7,6 +7,7 @@ const ALLOWED_HOSTS = [
   'issquareup.com',
   'www.apple.com',
   'developer.mastercard.com',
+  'eservice.psa.at',
 ];
 
 export const onRequest: PagesFunction = async (context) => {

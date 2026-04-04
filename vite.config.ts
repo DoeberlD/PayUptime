@@ -26,6 +26,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/proxy\/mastercard/, ''),
       },
+      '/proxy/eps': {
+        target: 'https://eservice.psa.at',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/proxy\/eps/, ''),
+      },
     },
   },
 })
