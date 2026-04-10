@@ -3,9 +3,10 @@ import { Dashboard } from './components/Dashboard';
 import { IncidentHistory } from './components/IncidentHistory';
 import { CommunityReports } from './components/CommunityReports';
 import { InfoPage } from './components/InfoPage';
+import { PSPComparison } from './components/PSPComparison';
 import { RefreshIndicator } from './components/RefreshIndicator';
 
-type Tab = 'dashboard' | 'history' | 'community' | 'info';
+type Tab = 'dashboard' | 'history' | 'community' | 'compare' | 'info';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -55,6 +56,16 @@ function App() {
               Community
             </button>
             <button
+              onClick={() => setActiveTab('compare')}
+              className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md transition-colors whitespace-nowrap ${
+                activeTab === 'compare'
+                  ? 'bg-gray-800 text-white'
+                  : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+              }`}
+            >
+              Compare
+            </button>
+            <button
               onClick={() => setActiveTab('info')}
               className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md transition-colors whitespace-nowrap ${
                 activeTab === 'info'
@@ -71,6 +82,7 @@ function App() {
       {activeTab === 'dashboard' && <Dashboard />}
       {activeTab === 'history' && <IncidentHistory />}
       {activeTab === 'community' && <CommunityReports />}
+      {activeTab === 'compare' && <PSPComparison />}
       {activeTab === 'info' && <InfoPage />}
 
       <footer className="border-t border-gray-800 px-4 sm:px-6 py-4 mt-auto">
