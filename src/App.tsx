@@ -62,8 +62,9 @@ function App() {
       {activeTab === 'community' && <CommunityReports />}
 
       <footer className="border-t border-gray-800 px-4 sm:px-6 py-4 mt-auto">
-        <div className="max-w-6xl mx-auto text-center text-xs text-gray-600">
-          PayUptime aggregates public status pages. Not affiliated with any listed provider.
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-xs text-gray-600">
+          <span>&copy; Daniel Doeberl, 2026.</span>
+          <span>PayUptime aggregates public status pages. Not affiliated with any listed provider.</span>
         </div>
       </footer>
     </div>
