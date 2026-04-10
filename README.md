@@ -1,7 +1,7 @@
 # PayUptime — PSP Status Dashboard
 
 **Live:** [payuptime.com](https://payuptime.com)
-**Repo:** [github.com/DoeberlD/PSP-Monitor](https://github.com/DoeberlD/PSP-Monitor)
+**Repo:** [github.com/DoeberlD/PayUptime](https://github.com/DoeberlD/PayUptime)
 
 A real-time dashboard that aggregates the public status of major Payment Service Providers (PSPs) into a single view. Built as a portfolio project demonstrating payments domain knowledge.
 
