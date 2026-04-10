@@ -46,6 +46,16 @@ function App() {
               History
             </button>
             <button
+              onClick={() => setActiveTab('compare')}
+              className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md transition-colors whitespace-nowrap ${
+                activeTab === 'compare'
+                  ? 'bg-gray-800 text-white'
+                  : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+              }`}
+            >
+              PSP Ranking
+            </button>
+            <button
               onClick={() => setActiveTab('community')}
               className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md transition-colors whitespace-nowrap ${
                 activeTab === 'community'
@@ -54,16 +64,6 @@ function App() {
               }`}
             >
               Community
-            </button>
-            <button
-              onClick={() => setActiveTab('compare')}
-              className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md transition-colors whitespace-nowrap ${
-                activeTab === 'compare'
-                  ? 'bg-gray-800 text-white'
-                  : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
-              }`}
-            >
-              Compare
             </button>
             <button
               onClick={() => setActiveTab('info')}
