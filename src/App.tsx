@@ -4,9 +4,10 @@ import { IncidentHistory } from './components/IncidentHistory';
 import { CommunityReports } from './components/CommunityReports';
 import { InfoPage } from './components/InfoPage';
 import { PSPComparison } from './components/PSPComparison';
+import { ApiChanges } from './components/ApiChanges';
 import { RefreshIndicator } from './components/RefreshIndicator';
 
-type Tab = 'dashboard' | 'history' | 'community' | 'compare' | 'info';
+type Tab = 'dashboard' | 'history' | 'community' | 'compare' | 'apichanges' | 'info';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
@@ -56,6 +57,16 @@ function App() {
               PSP Ranking
             </button>
             <button
+              onClick={() => setActiveTab('apichanges')}
+              className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md transition-colors whitespace-nowrap ${
+                activeTab === 'apichanges'
+                  ? 'bg-gray-800 text-white'
+                  : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+              }`}
+            >
+              API Changes
+            </button>
+            <button
               onClick={() => setActiveTab('community')}
               className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm rounded-md transition-colors whitespace-nowrap ${
                 activeTab === 'community'
@@ -83,6 +94,7 @@ function App() {
       {activeTab === 'history' && <IncidentHistory />}
       {activeTab === 'community' && <CommunityReports />}
       {activeTab === 'compare' && <PSPComparison />}
+      {activeTab === 'apichanges' && <ApiChanges />}
       {activeTab === 'info' && <InfoPage />}
 
       <footer className="border-t border-gray-800 px-4 sm:px-6 py-4 mt-auto">
