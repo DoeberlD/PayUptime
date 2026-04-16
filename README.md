@@ -40,7 +40,6 @@ Payment Operations teams typically monitor 8-12 separate status pages to track P
 
 ### Community
 - **Downdetector links** — Direct links to Austrian Downdetector (allestörungen.at) for Visa, PayPal, Stripe, Klarna, Mastercard
-- **Feedback sources** — Drei app store reviews (Kundenzone + Up von Drei), Trustpilot, CHIP, LTE Forum, Firmenhandy.at, Reddit
 
 ### Info
 - Product explainer — what PayUptime is, what it monitors, features, how it works, target audience

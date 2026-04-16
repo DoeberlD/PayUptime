@@ -15,63 +15,6 @@ const DOWNDETECTOR_LINKS: LinkCard[] = [
   { name: 'Mastercard', logo: '/logos/visa.svg', url: `${DOWNDETECTOR_BASE}/mastercard/`, description: 'Mastercard outage reports' },
 ];
 
-const FEEDBACK_LINKS: LinkCard[] = [
-  {
-    name: 'Trustpilot',
-    logo: '/logos/trustpilot.svg',
-    url: 'https://www.trustpilot.com',
-    description: 'Customer reviews and ratings',
-  },
-  {
-    name: 'Drei Kundenzone (iOS)',
-    logo: '/logos/drei.svg',
-    url: 'https://apps.apple.com/at/app/kundenzone/id440477229?see-all=reviews&platform=iphone',
-    description: 'Kundenzone iOS app reviews',
-  },
-  {
-    name: 'Drei Kundenzone (Android)',
-    logo: '/logos/drei.svg',
-    url: 'https://play.google.com/store/apps/details?id=com.hutchison3g.at.android.selfcare',
-    description: 'Kundenzone Android app reviews',
-  },
-  {
-    name: 'Up von Drei (iOS)',
-    logo: '/logos/drei.svg',
-    url: 'https://apps.apple.com/at/app/up-von-drei-mobilfunk/id1593180423?see-all=reviews&platform=iphone',
-    description: 'Up von Drei iOS app reviews',
-  },
-  {
-    name: 'Up von Drei (Android)',
-    logo: '/logos/drei.svg',
-    url: 'https://play.google.com/store/apps/details?id=at.drei.up3',
-    description: 'Up von Drei Android app reviews',
-  },
-  {
-    name: 'CHIP',
-    logo: '/logos/chip.svg',
-    url: 'https://www.chip.de/artikel/Bestes-Handy-Netz-in-Oesterreich-Magenta-A1-und-Drei-im-Test_186683519.html',
-    description: 'Mobile network test Austria',
-  },
-  {
-    name: 'LTE Forum',
-    logo: '/logos/lteforum.svg',
-    url: 'https://www.lteforum.at/forum/3-hutchison-austria.13/',
-    description: 'Hutchison/Drei community forum',
-  },
-  {
-    name: 'Firmenhandy.at',
-    logo: '/logos/firmenhandy.svg',
-    url: 'https://firmenhandy.at/business-tarife/drei-business/',
-    description: 'Drei business tariff reviews',
-  },
-  {
-    name: 'Reddit r/Austria',
-    logo: '/logos/reddit.svg',
-    url: 'https://www.reddit.com/r/Austria/comments/1n26rlp/erfahrungen_mit_drei/',
-    description: 'Community experiences with Drei',
-  },
-];
-
 function LinkCardComponent({ card }: { card: LinkCard }) {
   return (
     <a
@@ -112,21 +55,6 @@ export function CommunityReports() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {DOWNDETECTOR_LINKS.map((card) => (
-            <LinkCardComponent key={card.name} card={card} />
-          ))}
-        </div>
-      </section>
-
-      {/* Feedback sources section */}
-      <section>
-        <div className="flex items-center gap-3 mb-4">
-          <div>
-            <h2 className="text-lg font-semibold text-gray-200">Feedback Sources</h2>
-            <p className="text-xs text-gray-500">User reviews, forums, and community discussions</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {FEEDBACK_LINKS.map((card) => (
             <LinkCardComponent key={card.name} card={card} />
           ))}
         </div>
